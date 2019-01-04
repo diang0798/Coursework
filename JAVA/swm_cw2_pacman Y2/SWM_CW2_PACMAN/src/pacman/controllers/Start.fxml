@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Arc?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" prefHeight="720.0" prefWidth="1225.0" vgap="10" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pacman.controllers.StartController">
+	<columnConstraints>
+		<ColumnConstraints />
+	</columnConstraints>
+	<rowConstraints>
+		<RowConstraints />
+	</rowConstraints>
+	<children>
+		<Pane prefHeight="720.0" prefWidth="1225.0" style="-fx-background-color: black;">
+			<children>
+				<Button layoutX="505.0" layoutY="382.0" mnemonicParsing="false" onAction="#startGame" prefHeight="80.0" prefWidth="215.0" text="Start">
+					<font>
+						<Font name="Bodoni MT Bold Italic" size="41.0" />
+					</font>
+				</Button>
+				<Button layoutX="551.0" layoutY="524.0" mnemonicParsing="false" onAction="#setup" prefHeight="53.0" prefWidth="124.0" text="Setup">
+               <font>
+                  <Font name="Bodoni MT Bold Italic" size="21.0" />
+               </font></Button>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="173.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/img/pacman.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="124.0" layoutX="849.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" scaleX="-1.0">
+               <image>
+                  <Image url="@../../../resources/img/ghost2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="124.0" layoutX="748.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" scaleX="-1.0">
+               <image>
+                  <Image url="@../../../resources/img/ghost3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="124.0" layoutX="947.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" scaleX="-1.0">
+               <image>
+                  <Image url="@../../../resources/img/ghost4.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="124.0" layoutX="646.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" scaleX="-1.0">
+               <image>
+                  <Image url="@../../../resources/img/ghost1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="100.0" fitWidth="124.0" layoutX="1052.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true" scaleX="-1.0">
+               <image>
+                  <Image url="@../../../resources/img/ghost5.png" />
+               </image>
+            </ImageView>
+            <Circle fill="#f0e805e7" layoutX="358.0" layoutY="251.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#f0e805e7" layoutX="420.0" layoutY="251.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#f0e805e7" layoutX="548.0" layoutY="251.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#f0e805e7" layoutX="485.0" layoutY="251.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fill="#f0e805e7" layoutX="609.0" layoutY="251.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fitHeight="261.0" fitWidth="560.0" layoutX="351.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/img/pacman_icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="301.0" fitWidth="315.0" layoutX="823.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/img/Pac_man_party_3D_render.png" />
+               </image>
+            </ImageView>
+            <Arc layoutX="912.0" layoutY="53.0" length="270.0" radiusX="16.0" radiusY="12.0" startAngle="45.0" stroke="BLACK" strokeType="INSIDE" type="ROUND" />
+			</children>
+		</Pane>
+	</children>
+</GridPane>
