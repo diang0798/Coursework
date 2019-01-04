@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<!-- saved from url=(0093)https://moodle.nottingham.ac.uk/pluginfile.php/4207993/mod_resource/content/3/ae1pga-cw4.html -->
+<html lang="en" class="gr__moodle_nottingham_ac_uk"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+    <title>AE1PGA Coursework 4 - Drone Checker</title>
+    <meta name="description" content="AE1PGA Coursework 4">
+    <meta name="author" content="Paul Dempster">
+    <style>
+      h2, h3 {
+      text-decoration: underline;
+      }
+      img {
+      border: 1px solid black;
+      }
+    </style>
+  </head>
+  
+  <body data-gr-c-s-loaded="true">
+    <h1>AE1PGA Coursework 4 - Drone Checker</h1>
+
+
+    <h2>Introduction</h2>
+
+    <p>This is the fourth AE1PGA Coursework.  It is worth <b>35% of the module mark</b>.
+      It requires you to write a program which will monitor the movements of drones and detect if they are entering no-fly zones.
+      The deadline for this exercise is <b>16:00 on Thursday 21st of December 2017</b>.
+    </p>
+
+    <p><strong>Read the entire document before beginning the exercise.</strong></p>
+
+    <p>If you have any questions about this exercise, please ask in the Q&amp;A forum on Moodle, after a lecture, in a lab, or during the advertised office hours.
+      Do not post your program or parts of your program to Moodle as you are not allowed to share your coursework programs with other students.
+      
+  If any questions requires this exercise to be clarified then this 
+document will be updated and everyone will be notified via Moodle.
+    </p>
+
+    <h3>Version History</h3>
+    <ul>
+      <li>Version 1.0 - 2017-12-07 - Original version.</li>
+    </ul>
+
+    
+<h2>Submission</h2>
+
+    <p>You must submit a single C source code file containing all your code for this exercise.  This file must be called <code>dronechecker.c</code>
+ and must not require any other files outside of the standard C headers 
+which are always available.  The first line of the file should be a 
+comment which contains your student ID number, username, and full name, 
+of the form:<br>
+      <code style="padding-left:5em;">// 6512345 zy12345 Joe Blogs</code>
+    </p>
+    <p>The file must compile without warnings or errors when I use the command<br>
+      <code style="padding-left:5em;">gcc -std=c99 -lm -Wall -Wformat -Wwrite-strings dronechecker.c -o dronechecker</code>
+    </p>
+    <p>
+      This command will be run on our Linux server <code>cslinux</code>.
+  If it does not compile, for any reason, then you will lose all the 
+marks for testing (common reasons in the past have been submitting a 
+file with the wrong filename, or developing your solution on your 
+personal computer without having tested it on our Linux server).  If the
+ file compiles but has warnings then you will lose some marks for not 
+correcting the warnings.
+    </p>
+
+    <p>The completed source code file should be uploaded to the Coursework 4 Submission link on the AE1PGA Moodle page.  You may submit 
+as many times as you wish before the deadline (the last submission 
+before the deadline will be used).  After the deadline has passed, if 
+you have already submitted your exercise then you will not be able to 
+submit again.  If you have not already submitted then you will be 
+allowed to submit <b>once</b>.
+    </p>
+
+    <p>Remember that you can only access the Linux server from the 
+designated labs in SEB and SSB and that these labs are also heavily 
+booked for teaching.  <b>Do not</b> wait until the last moment to submit
+ as you may find you cannot get into any of the rooms to access your 
+source code files.  Not being able to access the machine due to lack of 
+      planning is <b>not</b> an extenuating circumstance.
+      If you choose to use the VDI then the same rules apply.  Equipment occasionally breaks down, is full, inaccessible or unreliable.  You need to plan ahead to allow time for foreseeable things outside of your control going wrong. </p>
+
+    <p><b>Late submissions</b>: AE1PGA late submission policy is <b>different</b> from the standard university policy.  Late submissions will lose 5 percentage points <b>per hour</b>,
+ rounded up to the next whole hour.  This is to better represent the 
+large benefit a small amount of extra time can give at the end of a 
+programming exercise.  No late submissions will be accepted more than 24
+ hours after the exercise deadline.  If you have extenuating 
+circumstances you should file them before the deadline.</p>
+
+    <h2>Plagiarism</h2>
+    <b>
+    <p>You should complete this coursework on your own.  Anyone 
+suspected of plagiarism will be investigated and punished in accordance 
+with the university policy on plagiarism (see your student handbook and 
+the University Quality Manual). This may include a mark of zero for this
+ coursework.</p>
+
+    <p>You should write the source code required for this assignment 
+yourself. If you use code from other sources (books, web pages, etc), 
+you should use comments to acknowledge this (and marks will be heavily 
+      adjusted down accordingly).
+      <i>The only exception to this is the prompt function or the dynamic data-structures
+	developed
+	during the lectures; you may use these, with or without modification,
+	without penalty as long as you add a comment saying you have taken them from the lectures and saying how you have modified it (or not modified it).  If you do not acknowledge their source in a comment then it will be regarded as potential plagiarism.
+      </i>
+    </p>
+
+    <p>You must not copy or share source code with other students.  You 
+must not work together on your solution.  You can informally talk about 
+higher-level ideas but not to a level of detail that would allow you all
+ to create the same source code.
+    </p>
+
+    <p>Remember, it is quite easy for experienced lecturers to spot 
+      plagiarism in source code.  We also have automated tools that can help us
+      identify shared code, even with modifications designed to hide copying.
+      If you are having problems you should ask 
+questions rather then plagiarize.  If you are not able to complete the 
+exercise then you should still submit your incomplete program as that 
+will still get you some of the marks for the parts you have done (but 
+make sure your incomplete solution compiles and partially runs!).
+    </p>
+
+    <p>If I have concerns about a submission, I may ask you to come to my office and explain your work in your own words.
+    </p>
+    
+    </b>
+<h2>Marking</h2>
+
+    <p>The marking scheme will be as follows:
+      </p><ul>
+	<li><i>Tests (60%):</i> Your program should correctly implement the 
+task requirements.  A number of tests will be run against your program 
+with different input data designed to test if this is the case for each 
+individual requirement.  The tests themselves are secret but general 
+examples of the tests might be:
+	  <ul>
+	    <li>Does the program work with the example I/O in the question?
+	    </li><li>Does the program work with typical valid input?
+	    </li><li>Does the program correctly deal with input around boundary values?
+	    </li><li>Does the program correctly deal with invalid values?
+	    </li><li>Does the program handle errors with resources not being available (eg, malloc failing or a filename being wrong)?
+	    </li><li>Does the program output match the required format?
+	  </li></ul>
+	  As noted in the submission section, <b>if your program does not compile then you will lose all testing marks</b>.
+	  
+	</li><li><i>Appropriate use of language features (30%):</i>
+	  Your program should use the appropriate C language features in your 
+solution.   You can use any language features or techniques that you 
+have seen in the course, or you have learned on your own, as long as 
+they are appropriate to your solution.  Examples of this might be:
+	  <ul>
+	    <li>If you have many similar values, are you using arrays (or equivalent) instead of many individual variables?
+	    </li><li>Have you broken your program down into separate functions?
+	    </li><li>Are all your function arguments being used?
+	    </li><li>If your functions return values, are they being used?
+	    </li><li>If you have complex data, are you using structures?
+	    </li><li>Are you using loops to avoid repeating many lines of code?
+	    </li><li>Are your if/switch statements making a difference, or is the conditions always true or false making the statement pointless?
+	  </li></ul>
+
+	</li><li><i>Source code formatting (10%):</i>
+	  Your program should be correctly formatted and easy to understand by a
+ competent C programmer.  This includes, but is not limited to, 
+indentation, bracketing, variable/function naming, and use of comments. 
+ See the lecture notes, and the example programs 
+for examples of correctly formatting programs.
+
+      </li></ul>
+Late Submissions: see submission section above.
+      <p></p>
+
+      <h2>Task</h2>
+
+      <p>Your task is to write a program that will check that the flight plan of a drone does not enter any no-fly zones.  A representation of the no-fly zones will be stored in a file that your program will need to load.  The flight plan of the drone will also be stored in a different file you will need to load.  Both of these filenames will be specified as command line parameters (first the no-fly zone filename, then the flight plan filename).  Your program should then check the flight plan to make sure the drone does not enter any no-fly zones during it's flight.
+      </p>
+
+    <p>If the program is run without the correct number of command line parameters, it should exit with the error message "Invalid command line arguments.  Usage: &lt;noflyzones&gt; &lt;flightplan&gt;".  Both filenames may be relative or absolute pathnames which can be understood by <code>fopen</code>.  If either file cannot be opened, use <code>perror</code> to print the error message "Cannot open X file." together with the operating system specific error message and exit with exit code 1, where X is either "no-fly zone" or "flight plan" as appropriate.  Check the no-fly zone file is accessible and valid before checking the flight plan file is accessible and valid.
+    </p>
+      
+    <p>The format of the no-fly zone file is as follows.
+      </p><ul>
+	<li>Lines are separated by a single newline character '\n'.
+	</li><li>Lines that start with the character '#' are comments and their contents should be ignored until the end of the line.
+	</li><li>Blank lines (lines with no characters) should be ignored.
+	</li><li>Each line that describes a circular no-fly zone will contain 3 integers separated by one or more whitespace characters.  Each integer will be greater than or equal to zero and less than 10,000.
+	  <ul>
+	    <li>The first number is the x coordinate of the center of the  no-fly zone.
+	    </li><li>The second number is the y coordinate of the center of the  no-fly zone.
+	    </li><li>The third number is the radius of the no-fly zone.
+	  </li></ul>
+
+	</li><li>Non-blank, non-comment lines that do not match that format are invalid.  In this case, the program should print the error message "No-fly zone file invalid." and exit with exit code 2.
+	</li><li>There is no limit on the number of no-fly zones in the file.  There may be zero.  The radius of each no-fly zone will always be greater than zero.  You can assume no no-fly zones overlap.
+      </li></ul>
+    <p></p>
+
+    <p>The format of the flight plan file is as follows.
+      </p><ul>
+	<li>Lines are separated by a single newline character '\n'.
+	</li><li>Lines that start with the character '#' are comments and their contents should be ignored until the end of the line.
+	</li><li>Blank lines (line with no characters) should be ignored.
+	</li><li>Each line that describes a waypoint will contain 2 integers separated by one or more whitespace characters.  Each integer will be greater than or equal to zero and less than 10,000.
+	  <ul>
+	    <li>The first number is the x coordinate of the center of the way point.
+	    </li><li>The second number is the y coordinate of the center of the way point.
+	  </li></ul>
+	</li><li>Non-blank, non-comment lines that do not match that format are invalid.  In this case, the program should print the error message "Flight plan file invalid." and exit with exit code 3.
+	</li><li>There is no limit on the number of way-points in the file.  There will always be at least 2.  No two consecutive way-points will have the same coordinates.
+      </li></ul>
+
+    <p></p>
+
+    <p>The drone will move in a straight line between each of the way-points given in the flight plan file.  The flight plan is only valid if the drone never enters any of the restricted areas.  To determine if the drone has entered a restricted area, you need to check if any of the line segments between the waypoints intersect any of the restricted areas.
+      For a given line segment,
+      </p><ul>
+	<li>if one or both of the way-points are inside a restricted area then the flight plan is invalid.
+	</li><li>if neither way-point is inside a restricted area but the line segment intersects (crosses through) a restricted area then the flight plan is invalid.
+      </li></ul>
+    <p></p>
+    
+    <p>To check if a given line segment intersects a circle, you can use the following equations.  Given a line segment with start point coordinates (<i>A<sub>x</sub></i>, <i>A<sub>y</sub></i>) and end point coordinates (<i>B<sub>x</sub></i>, <i>B<sub>y</sub></i>), and a circle of radius <i>r</i> with it's center at point (<i>C<sub>x</sub></i>, <i>C<sub>y</sub></i>), the line segment intersects the circle if the quadratic equation <i>Xt<sup>2</sup> + Yt + Z = 0</i> has 1 or more real roots between 0 and 1 (inclusive) when solving for <i>t</i> where,
+    </p>
+    
+    <p style="padding-left:5em;">
+    <i>X =
+      A<sub>x</sub><sup>2</sup> -
+      (2 * A<sub>x</sub> * B<sub>x</sub>) + B<sub>x</sub><sup>2</sup> + A<sub>y</sub><sup>2</sup> - (2 * A<sub>y</sub> * B<sub>y</sub>) + B<sub>y</sub><sup>2</sup>
+      <br><br>
+      Y = (2 * C<sub>x</sub> * B<sub>x</sub>) - (2 * C<sub>x</sub> * A<sub>x</sub>)
+      - (2 * C<sub>y</sub> * A<sub>y</sub>) + (2 * C<sub>y</sub> * B<sub>y</sub>)
+      + (2 * A<sub>x</sub> * B<sub>x</sub>) + (2 * A<sub>y</sub> * B<sub>y</sub>)
+      - (2 * B<sub>x</sub><sup>2</sup>) - (2 * B<sub>y</sub><sup>2</sup>)
+
+      
+      <br><br>
+      Z = C<sub>x</sub><sup>2</sup> - (2 * C<sub>x</sub> * B<sub>x</sub>) + C<sub>y</sub><sup>2</sup> - (2 * C<sub>y</sub> * B<sub>y</sub>) - r<sup>2</sup> + B<sub>x</sub><sup>2</sup> + B<sub>y</sub><sup>2</sup>
+    </i>
+    </p>
+
+    <p>In order to find out the roots, use the normal quadratic formula, substituting for the value of the formulas above,
+    </p>
+
+    <p style="padding-left:5em;">
+      <i>Discrim = Y<sup>2</sup> - (4 * X * Z)
+	<br><br>
+	t = (-Y ± sqrt(Discrim)) / (2 * X)
+      </i>
+    </p>
+
+    <p>If <i>Discrim</i> (the discriminant) is less than zero then there are no real roots.  If it is greater than or equal to zero, there may be one or more roots.  If either of those roots are between 0 and 1 (inclusive), then the line segments intersects the circle.  This also includes the line being tangential to the circle, which is also not a valid flight plan.  Note that these formulas are not valid if the line segment is entirely within the circle.
+    <b>Be careful with converting the maths into code.</b>  In particular, make sure your equations have appropriately parenthesis and the plus or minus signs are correct, and remember about integer versus floating point division.
+    </p>
+
+    <p>If the flight plan is valid, it should print "Flight plan valid." and exit with code 0.
+      If the flight plan is not valid, it should print "Invalid flight plan." and "Enters restricted area around X, Y." where X,Y are the coordinates of the center of the first no-fly zone entered.  It should then exit with code 4.
+    </p>
+
+    
+    <p>
+      If the program needs to exit because it cannot allocate memory, it should print the error message "Unable to allocate memory." and exit with exit code 5.
+      If the program needs to exit for any other reason not covered in this sheet, print an appropriate error message and exit with exit code 6.
+    </p>
+
+    
+
+<h2>Example input/output</h2>
+
+Given the following no-fly zone file (nofly.txt):
+<pre># no fly zones
+# x y radius
+500 100 55
+300 98 90
+456 365 44
+
+</pre>
+
+and flight plan file (flightplan.txt):
+
+<pre># flight plan
+# x y
+500 20
+400 100
+460 200
+460 276
+325 431
+
+</pre>
+
+Example:
+<pre>zlizpd3 $ ./dronechecker nofly.txt flightplan.txt
+Flight plan valid.
+zlizpd3 $ 
+</pre>
+
+Visual representation of flight, (0,0) off the top-left corner (for illustration; your program should not draw this):<br>
+<img src="./AE1PGA Coursework 4 - Drone Checker_files/good-flight-plan.png">
+
+<br><br>
+Given the previous no-fly zone file and a new flight plan file (flightplan2.txt):
+
+<pre># flight plan
+# x y
+500 20
+300 200
+460 200
+460 276
+325 431
+</pre>
+
+Example:
+<pre>zlizpd3 $ ./dronechecker nofly.txt flightplan2.txt
+Invalid flight plan.
+Enters restricted area around 300,98.
+zlizpd3 $ 
+</pre>
+
+Visual representation of flight, (0,0) off the top-left corner (for illustration; your program should not draw this):<br>
+<img src="./AE1PGA Coursework 4 - Drone Checker_files/bad-flight-plan.png">
+
+    <p>
+      More examples of valid and invalid flight plans with different no-fly zones will be made available 1 week after the exercise has been released.  Do not wait until that time to start your solution.  You should be able to design and implement your program, and create your own test data, from the specification above.
+    </p>
+
+<h2>Hints</h2>
+
+<ul>
+  <li>If you are given a file name, that file might not exist or you might not have permission to read it!
+  </li><li>Remember to free any memory which you no longer need.  Your program should not have any memory leaks (dynamically allocated areas of memory which are no longer reachable).  You will need to consider how the responsibility for allocated data transfers as your program runs.</li>
+  <li>There is a difference between a <i>line</i> (which is infinitely long) and a <i>line segment</i> (which has a specific start and end point).  Be careful with online references that use the wrong equations.
+  </li><li>The internal representation of your data does not have to be in the same format as the input files (ie, text).  It should be whatever format is easiest for your program to do what it needs to do with the data.
+  </li><li>On Linux, you can check the exit code of your program by running <code>echo $?</code> as the next command after your program has exited.
+  </li><li>The exercise does not need the full 2 weeks given to complete it.  You should be able to finish it, including a few problems and debugging, in roughly a single week (10 hours non-contact time per week for this module).  You have been given more time than that so you can fit it in around your other courseworks and studying.  Please plan ahead and do not leave it until the last moment.
+</li></ul>
+
+<b>END</b>
+
+  
+
+
+</body></html>

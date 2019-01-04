@@ -1,0 +1,3 @@
+The 1-th new sample belongs to class 1
+The 2-th new sample belongs to class 2
+The 3-th new sample belongs to class 3
